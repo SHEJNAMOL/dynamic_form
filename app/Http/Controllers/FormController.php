@@ -19,6 +19,24 @@ class FormController extends Controller
         return view('forms.create');
     }
 
+    // public function store(Request $request)
+    // {
+    //     $form = Form::create($request->only('name'));
+
+    //     foreach ($request->fields as $field) {
+    //         FormField::create([
+    //             'form_id' => $form->id,
+    //             'label' => $field['label'],
+    //             'type' => $field['type'],
+    //             'options' => $field['options'] ?? null,
+    //         ]);
+    //     }
+
+    //     return redirect()->route('forms.index');
+    // }
+
+
+
     public function store(Request $request)
     {
         $form = Form::create($request->only('name'));
@@ -32,8 +50,11 @@ class FormController extends Controller
             ]);
         }
 
+        FormCreated::dispatch($form);
+
         return redirect()->route('forms.index');
     }
+
 
     public function show(Form $form)
     {
@@ -73,4 +94,6 @@ class FormController extends Controller
         $form->delete();
         return redirect()->route('forms.index');
     }
+
+
 }

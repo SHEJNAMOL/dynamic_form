@@ -22,7 +22,7 @@
         </div>
     </div>
     <button type="button" class="btn btn-primary" onclick="addField()">Add Field</button>
-    {{-- <button type="submit" class="btn btn-success">Create Form</button> --}}
+    <button type="submit" class="btn btn-success">Create Form</button>
 </form>
 
     <script>
